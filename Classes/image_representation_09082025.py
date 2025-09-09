@@ -16,7 +16,7 @@ plt.xlabel('columns')
 plt.ylabel('rows')
 
 # Load a tif image
-img2 = cv.imread('Engeneering_for_Surgery/Classes/cameraman.tif')
+img2 = cv.imread('Engineering_for_Surgery/Classes/cameraman.tif')
 
 # Print the shape of the image
 print(np.shape(img2)) # This shows that the image is 3D, but we don't need the third channel for gray scale
