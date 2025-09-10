@@ -80,6 +80,48 @@ for i in range(1, 11):
     ax[1, 1].imshow(img, cmap='gray')
     ax[1, 1].contour(C, R, img_box, levels=[threshold[0]+0.5], colors='red')
 
-    plt.pause(1)
+    # plt.pause(1) # Uncomment to visualize
+
+plt.close('all')
+
+img_seg = img <= threshold[0]+0.5
+fig, ax = plt.subplots()
+ax.imshow(img_seg, cmap='gray')
+
+se = np.ones((3,3))
+img_seg_ero = morphology.binary_erosion(img_seg, se)
+fig, ax = plt.subplots(num = 'Erosion 3x3')
+ax.imshow(img_seg_ero, cmap='gray')
+
+se = np.ones((5,5))
+img_seg_ero = morphology.binary_erosion(img_seg, se)
+fig, ax = plt.subplots(num = 'Erosion 5x5')
+ax.imshow(img_seg_ero, cmap='gray')
+
+se = np.ones((7,7))
+img_seg_ero = morphology.binary_erosion(img_seg, se)
+fig, ax = plt.subplots(num = 'Erosion 7x7')
+ax.imshow(img_seg_ero, cmap='gray')
+
+img_seg_open = morphology.binary_dilation(img_seg_ero, se)
+fig, ax = plt.subplots(num = 'Dilation 7x7')
+ax.imshow(img_seg_open, cmap='gray') # Open image
+
+img_seg_open_dil = morphology.binary_dilation(img_seg_open, se)
+img_seg_open_dil_closed = morphology.binary_erosion(img_seg_open_dil, se)
+fig, ax = plt.subplots(num = 'Open-closed 7x7')
+ax.imshow(img_seg_open_dil_closed, cmap='gray') # Open image
+
+fig, ax = plt.subplots()
+ax.imshow(img, cmap='gray')
+plt.contour(C, R, img_seg_open_dil_closed, levels=[0.5], colors='red')
+
+# EXTRA: Connected components
+conn_comp_labels = measure.label(img_seg, background=0)
+props = measure.regionprops(conn_comp_labels)
+
+# Create the contour line plot
+
+
 
 plt.show()
