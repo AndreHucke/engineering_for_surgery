@@ -36,7 +36,7 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 
-f = open ('project_1\humact.json', 'rt')
+f = open ('Engineering_for_Surgery/project_1/humact.json', 'rt')
 
 d = json.load(f)
 f.close()
