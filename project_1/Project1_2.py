@@ -23,10 +23,15 @@ print(f'Activity Names: {actnames}')
 print(f'Feature Labels: {np.unique(featlabels)}')
 
 # Plot the features in a scatter plot
-r_feat = np.random.randint(0, feat.shape[1], size=2)
+# r_feat = np.random.randint(0, feat.shape[1], size=2)
 fig, ax = plt.subplots(1 , 2, figsize=(15, 5))
-ax[0].plot(feat[:, r_feat[0]], feat[:, r_feat[1]], 'o')
-ax[0].set_title(f'Features {r_feat[0]} and {r_feat[1]}')
+
+# Plot a random pair of features using the labels
+ax[0].set_title(f'Features {0} and {1}')
+# Add activity labels to the scatter plot
+scatter = ax[0].scatter(feat[:, 0], feat[:, 1], c=actid, cmap='OrRd')
+handles, labels = scatter.legend_elements()
+ax[0].legend(handles, actnames, title="Activity Names", loc="best")
 
 # Perform PCA on the features
 class myPca(pca):

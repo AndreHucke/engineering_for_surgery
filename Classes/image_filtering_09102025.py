@@ -116,12 +116,21 @@ fig, ax = plt.subplots()
 ax.imshow(img, cmap='gray')
 plt.contour(C, R, img_seg_open_dil_closed, levels=[0.5], colors='red')
 
-# EXTRA: Connected components
+plt.close('all')
+
+fig, ax = plt.subplots()
+ax.imshow(img, cmap='gray')
+plt.contour(C, R, img_seg, levels=[0.5], colors='red')
+
+# Connected components
 conn_comp_labels = measure.label(img_seg, background=0)
 props = measure.regionprops(conn_comp_labels)
 
-# Create the contour line plot
-
+# find the largest connected component
+mxi = 0
+for i in range(len(props)):
+    if props[i].area > props[mxi].area:
+        mxi = i
 
 
 plt.show()
