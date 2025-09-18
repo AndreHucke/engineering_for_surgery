@@ -132,5 +132,7 @@ for i in range(len(props)):
     if props[i].area > props[mxi].area:
         mxi = i
 
+img_seg_cc = conn_comp_labels == props[mxi].label
+plt.contour(C, R, img_seg_cc, levels=[0.5], colors='yellow')
 
 plt.show()
