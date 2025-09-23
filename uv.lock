@@ -310,6 +310,7 @@ dependencies = [
     { name = "scikit-learn" },
     { name = "scikit-sound" },
     { name = "scipy" },
+    { name = "setuptools" },
     { name = "six" },
     { name = "statsmodels" },
     { name = "sympy" },
@@ -336,7 +337,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "adjusttext", specifier = ">=1.3.0" },
+    { name = "adjusttext", specifier = "==1.3.0" },
     { name = "aiohttp", specifier = "==3.9.1" },
     { name = "aiosignal", specifier = "==1.3.1" },
     { name = "appdirs", specifier = "==1.4.4" },
@@ -413,6 +414,7 @@ requires-dist = [
     { name = "scikit-learn", specifier = "==1.3.2" },
     { name = "scikit-sound", specifier = "==0.2.13" },
     { name = "scipy", specifier = "==1.10.1" },
+    { name = "setuptools", specifier = "==65.5.1" },
     { name = "six", specifier = "==1.16.0" },
     { name = "statsmodels", specifier = "==0.14.1" },
     { name = "sympy", specifier = "==1.12" },
